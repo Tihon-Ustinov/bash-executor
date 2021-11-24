@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<% tasks.forEach(function(task){ %>
+    <hr>
+    <h3>Заача <a target="_blank" href="tasks/<%= task.id %>"><%= task.id %></a> находится в стутесе <%= task.status %></h3>
+    <% if (task.jobs.length > 0) { %>
+        <ul>
+        <% task.jobs.forEach(function (job) { %>
+                <li>
+                    <p><%= job.status %>:  <%= job.command %></p>
+                    <pre><%= job.message %></pre>
+                </li>
+        <% }) %>
+        </ul>
+    <% } %>
+
+    <hr>
+<% }); %>
+</body>
+</html>
